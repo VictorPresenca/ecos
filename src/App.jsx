@@ -1,35 +1,69 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import { listenAuth } from "./services/auth";
+import { Routes, Route, Link } from "react-router-dom";
 
-function App() {
-  const [count, setCount] = useState(0)
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import CreatePost from "./pages/CreatePost";
+import Feed from "./pages/Feed";
+import Profile from "./pages/Profile";
 
-  return (
-    <>
+function App(){
+
+  const [user,setUser] = useState(null);
+
+  useEffect(()=>{
+
+    listenAuth((u)=>{
+      setUser(u);
+    });
+
+  },[]);
+
+  if(!user){
+    return(
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <Login/>
+        <hr/>
+        <Register/>
       </div>
-      <h1>Ecos</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    )
+  }
+
+  return(
+
+    <div className="max-w-xl mx-auto mt-6 p-4">
+      <nav className="bg-gray-200 text-white p-4 flex justify-between items-center">
+        <h1 className="text-xl text-black font-bold">
+          Ecos
+        </h1>
+
+        <div className="flex gap-6">
+          <Link to="/" className="hover:underline">
+            Feed
+          </Link>
+
+          <Link to="/create" className="hover:underline">
+            Criar Post
+          </Link>
+
+          <Link to="/profile" className="hover:underline">
+            Perfil
+          </Link>
+        </div>
+
+      </nav>
+
+      <hr />
+
+      <Routes>
+        <Route path="/" element={<Feed />} />
+        <Route path="/create" element={<CreatePost />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
+    </div>
+
   )
 }
 
-export default App
+export default App;
