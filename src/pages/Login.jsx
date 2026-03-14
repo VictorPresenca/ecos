@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { auth } from "../services/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { Link } from "react-router-dom";
 
 function Login(){
 
@@ -54,6 +55,14 @@ function Login(){
         </button>
 
       </form>
+
+
+      <p className="mt-4">
+        Ainda não tem conta?{" "}
+        <Link to="/register" className="text-green-600 font-semibold">
+          Cadastre-se
+        </Link>
+      </p>
     </div>
 
 

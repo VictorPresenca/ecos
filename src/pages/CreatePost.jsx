@@ -8,6 +8,7 @@ function CreatePost() {
 
   const [text, setText] = useState("");
   const [file, setFile] = useState(null);
+  const [success,setSuccess] = useState("");
   const user = auth.currentUser;
 
   async function handleSubmit(e) {
@@ -25,10 +26,8 @@ function CreatePost() {
 
     try {
 
-      // 1️⃣ enviar imagem para o Cloudinary
       const imageUrl = await uploadImage(file);
 
-      // 2️⃣ salvar no Firestore
       await addDoc(collection(db, "posts"), {
         text,
         imageUrl,
@@ -38,9 +37,8 @@ function CreatePost() {
         createdAt: new Date()
       });
 
-      console.log("Post criado!");
+      setSuccess("Postagem Criada com sucesso!");
 
-      // limpar formulário
       setText("");
       setFile(null);
 
@@ -54,6 +52,12 @@ function CreatePost() {
 
       <div className="w-full max-w-2xl p-4">
         <h2 className="text-xl font-bold mb-4">Criar post</h2>
+
+        {success && (
+          <p className="text-green-600 font-semibold mb-4">
+            {success}
+          </p>
+        )}
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
 
