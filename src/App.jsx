@@ -32,7 +32,7 @@ function App(){
 
   return(
 
-    <div className="max-w-xl mx-auto mt-6 p-4">
+    <div className="min-h-screen bg-gray-100">
       <nav className="bg-gray-200 text-white p-4 flex justify-between items-center">
         <h1 className="text-xl text-black font-bold">
           Ecos

@@ -33,44 +33,48 @@ function Feed(){
 
   return(
 
-    <div className="max-w-xl mx-auto mt-6 p-4">
+    <div className="min-h-screen flex justify-center bg-gray-100 py-6">
 
-      {posts.map(post => (
+      <div className="w-full max-w-lg px-4">
 
-        <div 
-          key={post.id}
-          className="bg-white rounded-xl shadow-md p-4 mb-6"
-        >
+        {posts.map(post => (
 
-          <p className="font-semibold text-gray-700">
-            {post.userEmail}
-          </p>
-
-          {post.imageUrl && (
-            <img 
-              src={post.imageUrl}
-              className="rounded-lg my-3"
-            />
-          )}
-
-          <p className="text-gray-800 mb-2">
-            {post.text}
-          </p>
-
-          <p>❤️ {post.likes}</p>
-
-          <button 
-            onClick={()=>handleLike(post.id)}
-            className="bg-red-500 text-white px-4 py-1 rounded-lg hover:bg-red-600"
+          <div 
+            key={post.id}
+            className="bg-white rounded-xl overflow-hidden shadow-md p-4 mb-6"
           >
-            Curtir
-          </button>
 
-          <Comments postId={post.id}/>
+            <p className="font-semibold text-gray-700">
+              {post.userEmail}
+            </p>
 
-        </div>
+            {post.imageUrl && (
+              <img 
+                src={post.imageUrl}
+                className="rounded-lg my-3"
+              />
+            )}
 
-      ))}
+            <p className="text-gray-800 mb-2">
+              {post.text}
+            </p>
+
+            <p>❤️ {post.likes}</p>
+
+            <button 
+              onClick={()=>handleLike(post.id)}
+              className="bg-red-500 text-white px-4 py-1 rounded-lg hover:bg-red-600"
+            >
+              Curtir
+            </button>
+
+            <Comments postId={post.id}/>
+
+          </div>
+
+        ))}
+
+      </div>
 
     </div>
 

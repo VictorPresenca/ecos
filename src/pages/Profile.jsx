@@ -34,21 +34,26 @@ function Profile(){
 
   return(
 
-    <div className="max-w-xl mx-auto mt-6 p-4">
+    <div className="min-h-screen flex justify-center bg-gray-100">
 
-      <h1>Meus posts</h1>
+      <div className="w-full max-w-lg p-4">
 
-      {posts.map(post=>(
-        <div key={post.id}>
+        <h1 className="text-2xl font-bold mb-6">Meus posts</h1>
 
-          <img src={post.imageUrl} width="300"/>
+        {posts.map(post=>(
+          <div key={post.id} className="bg-white rounded-xl shadow-md p-4 mb-6">
 
-          <p>{post.text}</p>
+            <img src={post.imageUrl} width="300" className="w-full rounded-lg mb-3"/>
 
-        </div>
-      ))}
+            <p>{post.text}</p>
+
+          </div>
+        ))}
+
+      </div>
 
     </div>
+
 
   )
 

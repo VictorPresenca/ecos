@@ -50,27 +50,32 @@ function CreatePost() {
   }
 
   return (
-    <div className="max-w-xl mx-auto mt-6 p-4">
-      <h2>Criar post</h2>
+    <div className="min-h-screen flex justify-center bg-gray-100">
 
-      <form onSubmit={handleSubmit}>
+      <div className="w-full max-w-2xl p-4">
+        <h2 className="text-xl font-bold mb-4">Criar post</h2>
 
-        <textarea
-          placeholder="Compartilhe sua ação ecológica"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
 
-        <input
-          type="file"
-          onChange={(e) => setFile(e.target.files[0])}
-        />
+          <input
+            type="file"
+            onChange={(e) => setFile(e.target.files[0])}
+          />
 
-        <button type="submit">
-          Publicar
-        </button>
+          <textarea
+          className="border rounded-lg p-2"
+            placeholder="Compartilhe sua ação ecológica"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
 
-      </form>
+          <button type="submit" className="bg-green-600 text-white p-2 rounded-lg">
+            Publicar
+          </button>
+
+        </form>
+      </div>
+
     </div>
   );
 }
