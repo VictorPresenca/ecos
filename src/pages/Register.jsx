@@ -29,7 +29,7 @@ function Register() {
   return(
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
 
-      <form onSubmit={handleRegister} className="bg-white p-8 shadow-md w-full max-w-md flex flex-col gap-4">
+      <form onSubmit={handleRegister} className="bg-white p-8 shadow-md rounded-xl w-full max-w-md flex flex-col gap-4">
 
         <h2 className="text-2xl font-bold text-center">Criar conta</h2>
 

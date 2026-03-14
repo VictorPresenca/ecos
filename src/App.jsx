@@ -22,11 +22,11 @@ function App(){
 
   if(!user){
     return(
-      <div>
-        <Login/>
-        <hr/>
-        <Register/>
-      </div>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="*" element={<Login />} />
+      </Routes>
     )
   }
 
@@ -57,6 +57,8 @@ function App(){
       <hr />
 
       <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/" element={<Feed />} />
         <Route path="/create" element={<CreatePost />} />
         <Route path="/profile" element={<Profile />} />

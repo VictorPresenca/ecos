@@ -50,7 +50,7 @@ function Login(){
           onChange={(e)=>setPassword(e.target.value)}
         />
 
-        <button className="bg-green-600 text-while p-2 rounded-lg hover:bg-green-700">
+        <button className="bg-green-600 text-white p-2 rounded-lg hover:bg-green-700">
           Entrar
         </button>
 
