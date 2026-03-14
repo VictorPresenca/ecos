@@ -54,15 +54,15 @@ function Login(){
           Entrar
         </button>
 
+        <p className="text-gray-600 mt-4">
+          Ainda não tem conta?{" "}
+          <Link to="/register" className="text-green-600 font-semibold">
+            Cadastre-se
+          </Link>
+        </p>
+
       </form>
-
-
-      <p className="mt-4">
-        Ainda não tem conta?{" "}
-        <Link to="/register" className="text-green-600 font-semibold">
-          Cadastre-se
-        </Link>
-      </p>
+      
     </div>
 
 

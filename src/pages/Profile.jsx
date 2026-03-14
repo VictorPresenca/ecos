@@ -2,6 +2,7 @@ import { useEffect,useState } from "react"
 import { db } from "../services/firebase"
 import { collection,query,where,onSnapshot } from "firebase/firestore"
 import { auth } from "../services/firebase"
+import { signOut } from "firebase/auth"
 
 function Profile(){
 
@@ -32,11 +33,36 @@ function Profile(){
 
   },[])
 
+  async function handleLogout(){
+
+    try{
+
+      await signOut(auth)
+
+      alert("Você saiu da conta")
+
+      window.location.href="/login"
+
+    }catch(error){
+
+      alert("Erro ao fazer logout")
+
+    }
+
+  }
+
   return(
 
     <div className="min-h-screen flex justify-center bg-gray-100">
 
       <div className="w-full max-w-lg p-4">
+
+        <button
+          onClick={handleLogout}
+          className="bg-red-500 text-white px-4 py-2 rounded mt-6 my-6"
+        >
+          Sair da conta
+        </button>
 
         <h1 className="text-2xl font-bold mb-6">Meus posts</h1>
 
