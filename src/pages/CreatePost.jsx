@@ -3,6 +3,7 @@ import { uploadImage } from "../services/cloudinary";
 import { db } from "../services/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { auth } from "../services/firebase";
+import { serverTimestamp } from "firebase/firestore";
 
 function CreatePost() {
 
@@ -34,7 +35,7 @@ function CreatePost() {
         userId: user.uid,
         userEmail: user.email,
         likes: 0,
-        createdAt: new Date()
+        createdAt: serverTimestamp()
       });
 
       setSuccess("Postagem Criada com sucesso!");

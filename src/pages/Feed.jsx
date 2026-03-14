@@ -3,6 +3,7 @@ import { db } from "../services/firebase";
 import { likePost } from "../services/posts";
 import { collection, onSnapshot } from "firebase/firestore";
 import Comments from "../components/Comments";
+import { query, orderBy } from "firebase/firestore";
 
 function Feed(){
 
@@ -10,7 +11,12 @@ function Feed(){
 
   useEffect(() => {
 
-    const unsubscribe = onSnapshot(collection(db, "posts"), (snapshot) => {
+    const q = query(
+      collection(db, "posts"),
+      orderBy("createdAt", "desc")
+    );
+
+    const unsubscribe = onSnapshot(q, (snapshot) => {
 
     const list = [];
 
