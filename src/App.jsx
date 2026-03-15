@@ -56,6 +56,8 @@ function App(){
 
       <hr />
 
+      <p className="m-8 text-center text-gray-500">Essa plataforma serve para conectar pessoas em prol do meio ambiente! Faça uma postagem de uma ação benéfica que você fez, <strong>mesmo que pequena</strong>, para incentivar as outras pessoas a fazerem o mesmo. Depois de postar, é muito importante que <a href="https://forms.gle/w81XqT6QdcLrKbz5A">clique aqui</a> para preencher o questionário de satisfação do app.</p>
+
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
